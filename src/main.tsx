@@ -1,10 +1,10 @@
 import React from "react";
-import { hydrate, render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import App from "./App";
 import "./index.css";
 import "pretendard/dist/web/static/pretendard.css";
+import App from "./App";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -19,11 +19,7 @@ const root = (
 );
 
 const main = () => {
-  if (rootElement && rootElement.hasChildNodes()) {
-    hydrate(root, rootElement);
-  } else {
-    render(root, rootElement);
-  }
+  if (rootElement) createRoot(rootElement).render(root);
 };
 
 main();

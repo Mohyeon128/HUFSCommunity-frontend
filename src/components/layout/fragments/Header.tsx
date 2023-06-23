@@ -4,18 +4,24 @@ import authStore from "@stores/auth-store";
 
 import { rem } from "polished";
 import { styled } from "@styles/stitches.config";
+import { Link } from "react-router-dom";
+import { AUTH_PATH, DASHBOARD_PATH } from "@constants/route-constants";
 
 const Header = observer(() => {
   return (
     <Wrapper>
       <Inner>
-        <Brand>외대로81</Brand>
+        <Brand to={DASHBOARD_PATH}>외대로81</Brand>
         <MenuContainer>
-          {authStore.user && <Menu>MY 소식</Menu>}
-          <Menu>전체</Menu>
-          <Menu>토픽</Menu>
+          {authStore.user && <MenuLink to={``}>MY 소식</MenuLink>}
+          <MenuLink to={``}>전체</MenuLink>
+          <MenuLink to={``}>토픽</MenuLink>
           <MenuDivider />
-          <Menu>{authStore.user ? authStore.user.name : "로그인"}</Menu>
+          {authStore.user ? (
+            <MenuLink to={``}>authStore.user.name</MenuLink>
+          ) : (
+            <MenuLink to={AUTH_PATH.LOGIN}>로그인</MenuLink>
+          )}
         </MenuContainer>
       </Inner>
     </Wrapper>
@@ -40,7 +46,7 @@ const Inner = styled("div", {
   marginX: "auto",
 });
 
-const Brand = styled("h1", {
+const Brand = styled(Link, {
   heading2: true,
   color: "$white",
 });
@@ -60,7 +66,7 @@ const MenuDivider = styled("span", {
   backgroundColor: "rgba(255,255,255,0.23)",
 });
 
-const Menu = styled("a", {
+const MenuLink = styled(Link, {
   color: "$white",
   fontSize: rem(16),
   fontWeight: 500,

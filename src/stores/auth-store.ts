@@ -53,7 +53,8 @@ class AuthStore {
 
   async login(email: string, password: string) {
     try {
-      const result = await signInWithEmailAndPassword(this.auth, email, password);
+      const result = await signInWithEmailAndPassword(getAuth(app), email, password);
+      console.log(result);
       this.getCurrentUserData(result.user.uid);
       return { successful: true };
     } catch {

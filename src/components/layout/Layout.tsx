@@ -15,13 +15,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const Wrapper = styled("div", {
   width: "100%",
-  height: "max-content",
-
-  background: "$background",
+  height: "100%",
+  background: "$gray100",
 });
 
 const Content = styled("main", {
   width: "100%",
+  height: "100%",
   maxWidth: rem(960),
   paddingTop: rem(72),
   paddingX: rem(24),

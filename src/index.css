@@ -17,16 +17,17 @@ input,
 }
 
 ::-moz-selection {
-  background: rgba(10, 25, 43, 0.21);
+  background: rgba(10, 25, 43, 0.4);
   color: #ffffff;
 }
 ::selection {
-  background: rgba(10, 25, 43, 0.21);
+  background: rgba(10, 25, 43, 0.4);
   color: #ffffff;
 }
 
 body {
   margin: 0;
+  height: "100%";
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
     "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", sans-serif;
@@ -49,7 +50,12 @@ input {
   border: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+html,
+body,
 #root {
-  width: "100vw";
-  height: "max-content";
+  height: 100%;
 }
