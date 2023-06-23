@@ -37,7 +37,7 @@ export const { styled, css, theme, createTheme, globalCss, config, keyframes } =
       /**
        * primary
        */
-      primary: "rgba(10, 25, 43, 1)",
+      primary: "#0A192B",
 
       /**
        * font

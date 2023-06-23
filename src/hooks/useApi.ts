@@ -4,7 +4,7 @@ import useSWR, { SWRConfiguration, SWRResponse } from "swr";
 export const fetcher = (url: string, token: string | undefined) =>
   axios
     .get(url, {
-      baseURL: ``,
+      baseURL: `172.20.10.2:8080`,
       headers: { Authorization: token ? `Bearer ${token}` : `` },
     })
     .then(async ({ data }) => {

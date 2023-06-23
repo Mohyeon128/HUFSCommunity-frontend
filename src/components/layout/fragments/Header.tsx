@@ -5,20 +5,25 @@ import authStore from "@stores/auth-store";
 import { rem } from "polished";
 import { styled } from "@styles/stitches.config";
 import { Link } from "react-router-dom";
-import { AUTH_PATH, DASHBOARD_PATH } from "@constants/route-constants";
+import logo from "@assets/logo.svg";
+import { AUTH_PATH, DASHBOARD_PATH, MY_PATH, TOPIC_PATH, TOTAL_PATH } from "@constants/route-constants";
 
 const Header = observer(() => {
   return (
     <Wrapper>
       <Inner>
-        <Brand to={DASHBOARD_PATH}>외대로81</Brand>
+        <Brand to={DASHBOARD_PATH}>
+          <Logo src={logo} draggable={false} />
+        </Brand>
         <MenuContainer>
-          {authStore.user && <MenuLink to={``}>MY 소식</MenuLink>}
-          <MenuLink to={``}>전체</MenuLink>
-          <MenuLink to={``}>토픽</MenuLink>
+          {!authStore.isLoading && authStore.user && <MenuLink to={``}>MY 소식</MenuLink>}
+          <MenuLink to={TOTAL_PATH}>전체</MenuLink>
+          <MenuLink to={TOPIC_PATH}>토픽</MenuLink>
           <MenuDivider />
-          {authStore.user ? (
-            <MenuLink to={``}>authStore.user.name</MenuLink>
+          {authStore.isLoading ? (
+            <MenuLink to={``}>로딩중</MenuLink>
+          ) : authStore.user ? (
+            <MenuLink to={MY_PATH}>{authStore.user.name}</MenuLink>
           ) : (
             <MenuLink to={AUTH_PATH.LOGIN}>로그인</MenuLink>
           )}
@@ -51,13 +56,14 @@ const Brand = styled(Link, {
   color: "$white",
 });
 
+const Logo = styled("img", {
+  width: rem(96),
+  userSelect: "none",
+});
+
 const MenuContainer = styled("div", {
   rowCentered: true,
-  gap: 28,
-
-  "@md": {
-    gap: 42,
-  },
+  height: "100%",
 });
 
 const MenuDivider = styled("span", {
@@ -67,6 +73,9 @@ const MenuDivider = styled("span", {
 });
 
 const MenuLink = styled(Link, {
+  centered: true,
+  height: "100%",
+  paddingX: rem(24),
   color: "$white",
   fontSize: rem(16),
   fontWeight: 500,

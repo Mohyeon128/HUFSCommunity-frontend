@@ -7,16 +7,17 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import useApi from "@hooks/useApi";
 
 import { UserDTO } from "@_types/common-type";
-import CommonApi from "@apis/common-api";
+import axios from "axios";
+import { baseURL } from "@apis/common-api";
 
 class AuthStore {
   auth = getAuth(app);
 
   user: UserDTO | undefined = undefined;
   token: string = "";
+  isLoading: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -30,15 +31,22 @@ class AuthStore {
     this.token = token;
   }
 
+  setIsLoading(loading: boolean) {
+    this.isLoading = loading;
+  }
+
   async getCurrentUserToken() {
     const idToken = await this.auth.currentUser?.getIdToken(true);
     this.setToken(idToken);
   }
 
   async getCurrentUserData(uid: string) {
+    this.setIsLoading(true);
     await this.getCurrentUserToken();
-    const { data } = useApi({ url: CommonApi.user.url(uid), _t: CommonApi.user._t }, this.token);
-    this.setUser(data);
+
+    const response = await axios.get<UserDTO>("/users", { baseURL: baseURL });
+    this.setUser(response.data);
+    this.setIsLoading(false);
   }
 
   async register(email: string, password: string) {
@@ -67,6 +75,7 @@ class AuthStore {
       await signOut(this.auth);
       this.setUser(undefined);
       this.setToken("");
+      return { successful: true };
     } catch {
       return { successful: false };
     }

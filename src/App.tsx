@@ -7,24 +7,41 @@ import Layout from "@components/layout/Layout";
 const DashboardPage = lazy(() => import("@pages/dashboard/DashBoardPage"));
 const LoginPage = lazy(() => import("@pages/auth/LoginPage"));
 const RegisterPage = lazy(() => import("@pages/auth/RegisterPage"));
+const MyPage = lazy(() => import("@pages/my/MyPage"));
+const TotalPage = lazy(() => import("@pages/total/TotalPage"));
+const TopicPage = lazy(() => import("@pages/topic/TopicPage"));
+const PostPage = lazy(() => import("@pages/posts/PostsPage"));
 
-import { AUTH_PATH, DASHBOARD_PATH } from "@constants/route-constants";
+import { AUTH_PATH, DASHBOARD_PATH, MY_PATH, POSTS_PATH, TOPIC_PATH, TOTAL_PATH } from "@constants/route-constants";
 
 const pages = [
   {
     path: DASHBOARD_PATH,
     component: DashboardPage,
-    auth: false,
   },
   {
     path: AUTH_PATH.LOGIN,
     component: LoginPage,
-    auth: false,
   },
   {
     path: AUTH_PATH.REGISTER,
     component: RegisterPage,
-    auth: false,
+  },
+  {
+    path: MY_PATH,
+    component: MyPage,
+  },
+  {
+    path: TOTAL_PATH,
+    component: TotalPage,
+  },
+  {
+    path: TOPIC_PATH,
+    component: TopicPage,
+  },
+  {
+    path: POSTS_PATH.WITHID,
+    component: PostPage,
   },
 ];
 

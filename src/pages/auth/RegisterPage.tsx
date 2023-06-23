@@ -15,12 +15,13 @@ const RegisterPage = observer(() => {
     if (authStore.user) navigate("/");
   }, []);
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
 
   const isInputValid =
-    validator.isEmail(email) && password !== "" && passwordRepeat !== "" && password === passwordRepeat;
+    name !== "" && validator.isEmail(email) && password !== "" && passwordRepeat !== "" && password === passwordRepeat;
 
   const handleRegister = async () => {
     if (!isInputValid) return;
@@ -36,6 +37,13 @@ const RegisterPage = observer(() => {
         <RegisterTitle>회원가입</RegisterTitle>
         <RegisterInput
           css={{ marginTop: rem(52) }}
+          placeholder="이름"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <RegisterInput
+          css={{ marginTop: rem(12) }}
           placeholder="이메일"
           type="email"
           value={email}
@@ -79,6 +87,8 @@ const Wrapper = styled("div", {
 const FormContainer = styled("div", {
   columnCentered: true,
   marginX: "auto",
+  width: "100%",
+  maxWidth: rem(467),
 });
 
 const RegisterTitle = styled("h1", {
@@ -87,10 +97,11 @@ const RegisterTitle = styled("h1", {
 
 const RegisterInput = styled("input", {
   form: true,
-  width: rem(467),
+  width: "100%",
   height: rem(64),
 });
 
 const RegisterSubmit = styled("button", {
   formSubmit: true,
+  width: "100%",
 });

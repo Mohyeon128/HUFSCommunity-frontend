@@ -73,6 +73,8 @@ const Wrapper = styled("div", {
 const FormContainer = styled("div", {
   columnCentered: true,
   marginX: "auto",
+  width: "100%",
+  maxWidth: rem(467),
 });
 
 const LoginTitle = styled("h1", {
@@ -81,16 +83,17 @@ const LoginTitle = styled("h1", {
 
 const LoginInput = styled("input", {
   form: true,
-  width: rem(467),
+  width: "100%",
   height: rem(64),
 });
 
 const LoginSubmit = styled("button", {
   formSubmit: true,
+  width: "100%",
 });
 
 const Divider = styled("span", {
-  width: rem(467),
+  width: "100%",
   hegiht: rem(1),
   marginY: rem(30),
   border: "1px solid rgba(226, 230, 237, 1)",

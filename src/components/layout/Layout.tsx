@@ -15,8 +15,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const Wrapper = styled("div", {
   width: "100%",
-  height: "100%",
+  height: rem(1),
+  minHeight: "100%",
   background: "$gray100",
+  overflowY: "auto",
 });
 
 const Content = styled("main", {
@@ -26,6 +28,7 @@ const Content = styled("main", {
   paddingTop: rem(72),
   paddingX: rem(24),
   marginX: "auto",
+  background: "$gray100",
 });
 
 export default Layout;
