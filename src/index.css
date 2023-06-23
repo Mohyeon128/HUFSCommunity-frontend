@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+.user-select * {
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+::-moz-selection {
+  background: rgba(10, 25, 43, 0.21);
+  color: #ffffff;
+}
+::selection {
+  background: rgba(10, 25, 43, 0.21);
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
+    "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+button {
+  background: transparent;
+  color: auto;
+  outline: none;
+  border: none;
+}
+
+input {
+  background: transparent;
+  color: auto;
+  outline: none;
+  border: none;
+}
+
+#root {
+  width: "100vw";
+  height: "max-content";
+}
