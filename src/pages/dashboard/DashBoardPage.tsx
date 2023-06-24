@@ -51,11 +51,14 @@ const DashBoardPage = observer(() => {
               })}
           </TopicList>
           <PostList>
-            {!timelineLoading &&
+            {timelineLoading ? (
+              <Loading />
+            ) : (
               timeline &&
               timeline.map((post) => {
                 return <PostCard key={post.id} post={post} />;
-              })}
+              })
+            )}
           </PostList>
         </>
       ) : (
@@ -63,11 +66,14 @@ const DashBoardPage = observer(() => {
           <PageTitle>최근 보낸 메일을 보여드릴게요</PageTitle>
           <PageSubtitle>로그인을 하고 메일로 토픽을 받아보세요!</PageSubtitle>
           <PostList>
-            {!postsLoading &&
+            {postsLoading ? (
+              <Loading />
+            ) : (
               posts &&
               posts.map((post) => {
                 return <PostCard key={post.id} post={post} />;
-              })}
+              })
+            )}
           </PostList>
         </>
       )}

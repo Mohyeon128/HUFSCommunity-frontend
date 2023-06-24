@@ -35,6 +35,15 @@ export const { styled, css, theme, createTheme, globalCss, config, keyframes } =
       gray900rgb: "70, 77, 82",
 
       /**
+       * blue
+       */
+      blue500: "#5673EB",
+      blue400: "#95A7EE",
+      blue300: "#CAD3F8",
+      blue200: "#D5DBF3",
+      blue100: "#EFF2FF",
+
+      /**
        * primary
        */
       primary: "#0A192B",

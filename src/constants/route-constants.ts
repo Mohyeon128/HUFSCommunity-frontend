@@ -21,3 +21,5 @@ export const POSTS_PATH = {
 };
 
 export const APPLY_PATH = "/apply";
+
+export const CONFIRM_PATH = "/confirm";

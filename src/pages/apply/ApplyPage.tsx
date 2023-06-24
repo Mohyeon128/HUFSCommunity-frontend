@@ -41,6 +41,7 @@ const ApplyPage = () => {
     if (response.status.toString().startsWith("2")) {
       alert("등록되었습니다!");
       navigate("/");
+      window.location.reload();
     }
   };
 

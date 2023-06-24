@@ -12,10 +12,12 @@ const TotalPage = lazy(() => import("@pages/total/TotalPage"));
 const TopicPage = lazy(() => import("@pages/topics/TopicsPage"));
 const PostsPage = lazy(() => import("@pages/posts/PostsPage"));
 const ApplyPage = lazy(() => import("@pages/apply/ApplyPage"));
+const ConfirmPage = lazy(() => import("@pages/confirm/ConfirmPage"));
 
 import {
   APPLY_PATH,
   AUTH_PATH,
+  CONFIRM_PATH,
   DASHBOARD_PATH,
   MY_PATH,
   POSTS_PATH,
@@ -59,6 +61,10 @@ const pages = [
   {
     path: APPLY_PATH,
     component: ApplyPage,
+  },
+  {
+    path: CONFIRM_PATH,
+    component: ConfirmPage,
   },
 ];
 
