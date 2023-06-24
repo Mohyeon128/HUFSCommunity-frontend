@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAxios from "axios-hooks";
 
 import { fadeIn } from "@styles/animations/fade-animation";
@@ -7,8 +8,12 @@ import { styled } from "@styles/stitches.config";
 
 import { TopicDTO } from "@_types/topic-types";
 import { baseURL } from "@apis/common-api";
+import axios from "axios";
+import { PostDTO } from "@_types/post-types";
 
 const ApplyPage = () => {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [topicIds, setTopicIds] = useState<number[]>([]);
@@ -31,7 +36,13 @@ const ApplyPage = () => {
     });
   };
 
-  const handleApply = () => {};
+  const handleApply = async () => {
+    const response = await axios.post<PostDTO>(`${baseURL}/posts`, { title, content, topicIds });
+    if (response.status.toString().startsWith("2")) {
+      alert("등록되었습니다!");
+      navigate("/");
+    }
+  };
 
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import { UserDTO } from "@_types/common-type";
 
-export const baseURL = `http://13.125.25.123:1005`;
+export const baseURL = `https://api.calguksu.com`;
 
 const CommonApi = {
   user: {
