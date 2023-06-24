@@ -55,6 +55,8 @@ https://drive.google.com/file/d/1AgoeoUX1dYvTnqT8qLWv28YV8yaqoG6g/view
 
 ### 백엔드
 
+Demo URL: https://github.com/Mohyeon128/HUFSCommunity-backend   
+
 백엔드 프로젝트는 **Kotlin** 언어로 개발되었으며, **Spring Boot 프레임워크**를 이용합니다.   
 
 데이터베이스로는 **Maria DB** 를 이용하고 있습니다.   
