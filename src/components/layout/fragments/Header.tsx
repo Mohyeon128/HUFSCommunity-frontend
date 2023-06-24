@@ -1,4 +1,5 @@
 import React from "react";
+import { useMatch } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import authStore from "@stores/auth-store";
 
@@ -6,9 +7,14 @@ import { rem } from "polished";
 import { styled } from "@styles/stitches.config";
 import { Link } from "react-router-dom";
 import logo from "@assets/logo.svg";
-import { AUTH_PATH, DASHBOARD_PATH, MY_PATH, TOPIC_PATH, TOTAL_PATH } from "@constants/route-constants";
+import { AUTH_PATH, DASHBOARD_PATH, MY_PATH, APPLY_PATH, TOPICS_PATH, TOTAL_PATH } from "@constants/route-constants";
+import { BeatLoader } from "react-spinners";
 
 const Header = observer(() => {
+  const matchApply = useMatch(APPLY_PATH);
+  const matchTotal = useMatch(`${TOTAL_PATH}/*`);
+  const matchTopic = useMatch(`${TOPICS_PATH.ROOT}/*`);
+
   return (
     <Wrapper>
       <Inner>
@@ -16,12 +22,36 @@ const Header = observer(() => {
           <Logo src={logo} draggable={false} />
         </Brand>
         <MenuContainer>
-          {!authStore.isLoading && authStore.user && <MenuLink to={``}>MY 소식</MenuLink>}
-          <MenuLink to={TOTAL_PATH}>전체</MenuLink>
-          <MenuLink to={TOPIC_PATH}>토픽</MenuLink>
+          {!authStore.isLoading && authStore.user && (
+            <MenuLink
+              to={APPLY_PATH}
+              style={!!matchApply ? { background: "linear-gradient(180deg, #0A192B 0%, #050F17 100%)" } : {}}
+            >
+              등록 신청
+            </MenuLink>
+          )}
+          <MenuLink
+            to={TOTAL_PATH}
+            style={!!matchTotal ? { background: "linear-gradient(180deg, #0A192B 0%, #050F17 100%)" } : {}}
+          >
+            전체
+          </MenuLink>
+          <MenuLink
+            to={TOPICS_PATH.ROOT}
+            style={!!matchTopic ? { background: "linear-gradient(180deg, #0A192B 0%, #050F17 100%)" } : {}}
+          >
+            토픽
+          </MenuLink>
           <MenuDivider />
           {authStore.isLoading ? (
-            <MenuLink to={``}>로딩중</MenuLink>
+            <BeatLoader
+              color={"#FFFFFF"}
+              loading={true}
+              size={8}
+              aria-label="Loading"
+              data-testid="loader"
+              style={{ padding: "0 24px 0 24px" }}
+            />
           ) : authStore.user ? (
             <MenuLink to={MY_PATH}>{authStore.user.name}</MenuLink>
           ) : (
@@ -69,6 +99,7 @@ const MenuContainer = styled("div", {
 const MenuDivider = styled("span", {
   width: 1,
   height: 28,
+  marginX: rem(24),
   backgroundColor: "rgba(255,255,255,0.23)",
 });
 

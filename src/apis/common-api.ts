@@ -1,6 +1,6 @@
 import { UserDTO } from "@_types/common-type";
 
-export const baseURL = `http://172.20.10.2:8080`;
+export const baseURL = `http://13.125.25.123:1005`;
 
 const CommonApi = {
   user: {

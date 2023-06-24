@@ -5,9 +5,11 @@ import useAxios from "axios-hooks";
 import { fadeIn } from "@styles/animations/fade-animation";
 import { rem } from "polished";
 import { styled } from "@styles/stitches.config";
+import Loading from "@components/Loading";
+
 import { baseURL } from "@apis/common-api";
 import { PostDTO } from "@_types/post-types";
-import { POSTS_PATH, TOPIC_PATH } from "@constants/route-constants";
+import { POSTS_PATH, TOPICS_PATH } from "@constants/route-constants";
 import dayjs from "dayjs";
 
 type ParamsType = {
@@ -24,24 +26,26 @@ const PostPage = () => {
 
   return (
     <Wrapper>
-      {postLoading
-        ? "로딩중"
-        : post && (
-            <>
-              <PostTitle>{post.title}</PostTitle>
-              <PostDate>{dayjs(post.createdDate).format("YYYY년 MM월 DD일 HH:mm")}</PostDate>
-              <TopicContiner>
-                {post.topics.map((topic) => (
-                  <Topic key={topic.id} to={`${TOPIC_PATH}/${topic.id}`}>
-                    {topic.name}
-                  </Topic>
-                ))}
-              </TopicContiner>
-              <PostContent
-                dangerouslySetInnerHTML={{ __html: post.content.replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp;") }}
-              />
-            </>
-          )}
+      {postLoading ? (
+        <Loading />
+      ) : (
+        post && (
+          <>
+            <PostTitle>{post.title}</PostTitle>
+            <PostDate>{dayjs(post.createdDate).format("YYYY년 MM월 DD일 HH:mm")}</PostDate>
+            <TopicContiner>
+              {post.topics.map((topic) => (
+                <Topic key={topic.id} to={`${TOPICS_PATH.ROOT}/${topic.id}`}>
+                  {topic.name}
+                </Topic>
+              ))}
+            </TopicContiner>
+            <PostContent
+              dangerouslySetInnerHTML={{ __html: post.content.replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp;") }}
+            />
+          </>
+        )
+      )}
     </Wrapper>
   );
 };

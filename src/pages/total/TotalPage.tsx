@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import _ from "lodash";
 import useAxios from "axios-hooks";
 
+import Loading from "@components/Loading";
 import PostCard from "@components/PostCard";
 import { fadeIn } from "@styles/animations/fade-animation";
 import { rem } from "polished";
@@ -17,14 +18,16 @@ const TotalPage = () => {
 
   return (
     <Wrapper>
-      <PageTitle>최근 전송된 포스트</PageTitle>
-      <PageSubtitle>최근 전송된 포스트를 가져왔어요!</PageSubtitle>
+      <PageTitle>전체 포스트</PageTitle>
+      <PageSubtitle>전송된 전체 포스트를 가져왔어요!</PageSubtitle>
       <PostList>
-        {postsLoading
-          ? "로딩중.."
-          : posts.map((post) => {
-              return <PostCard key={post.id} post={post} />;
-            })}
+        {postsLoading ? (
+          <Loading />
+        ) : (
+          posts.map((post) => {
+            return <PostCard key={post.id} post={post} />;
+          })
+        )}
       </PostList>
     </Wrapper>
   );

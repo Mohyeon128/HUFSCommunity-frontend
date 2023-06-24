@@ -17,7 +17,7 @@ class AuthStore {
 
   user: UserDTO | undefined = undefined;
   token: string = "";
-  isLoading: boolean = false;
+  isLoading: boolean = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -92,6 +92,7 @@ class AuthStore {
       } else {
         this.setUser(undefined);
         this.setToken("");
+        this.setIsLoading(false);
         return { successful: false };
       }
     });

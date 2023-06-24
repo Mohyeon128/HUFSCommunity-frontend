@@ -188,9 +188,11 @@ export const { styled, css, theme, createTheme, globalCss, config, keyframes } =
       backgroundColor: "$white",
       "&:hover": {
         borderColor: "#E2E6ED",
+        outline: "none",
       },
       "&:focus": {
         borderColor: "#E2E6ED",
+        outline: "none",
       },
       "&:placeholder": {
         color: "$placeholder",

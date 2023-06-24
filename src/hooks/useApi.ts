@@ -1,10 +1,11 @@
 import axios from "axios";
 import useSWR, { SWRConfiguration, SWRResponse } from "swr";
+import { baseURL } from "@apis/common-api";
 
 export const fetcher = (url: string, token: string | undefined) =>
   axios
     .get(url, {
-      baseURL: `172.20.10.2:8080`,
+      baseURL: baseURL,
       headers: { Authorization: token ? `Bearer ${token}` : `` },
     })
     .then(async ({ data }) => {

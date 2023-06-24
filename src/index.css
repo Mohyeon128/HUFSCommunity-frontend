@@ -6,7 +6,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-input,
 .user-select * {
   -webkit-touch-callout: text;
   -webkit-user-select: text;
@@ -64,4 +63,14 @@ body,
 #root {
   height: 100%;
   overflow-y: auto;
+}
+
+header {
+  z-index: 1;
+}
+
+textarea {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
+    "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", sans-serif;
 }

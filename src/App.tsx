@@ -9,10 +9,19 @@ const LoginPage = lazy(() => import("@pages/auth/LoginPage"));
 const RegisterPage = lazy(() => import("@pages/auth/RegisterPage"));
 const MyPage = lazy(() => import("@pages/my/MyPage"));
 const TotalPage = lazy(() => import("@pages/total/TotalPage"));
-const TopicPage = lazy(() => import("@pages/topic/TopicPage"));
-const PostPage = lazy(() => import("@pages/posts/PostsPage"));
+const TopicPage = lazy(() => import("@pages/topics/TopicsPage"));
+const PostsPage = lazy(() => import("@pages/posts/PostsPage"));
+const ApplyPage = lazy(() => import("@pages/apply/ApplyPage"));
 
-import { AUTH_PATH, DASHBOARD_PATH, MY_PATH, POSTS_PATH, TOPIC_PATH, TOTAL_PATH } from "@constants/route-constants";
+import {
+  APPLY_PATH,
+  AUTH_PATH,
+  DASHBOARD_PATH,
+  MY_PATH,
+  POSTS_PATH,
+  TOPICS_PATH,
+  TOTAL_PATH,
+} from "@constants/route-constants";
 
 const pages = [
   {
@@ -36,12 +45,20 @@ const pages = [
     component: TotalPage,
   },
   {
-    path: TOPIC_PATH,
+    path: TOPICS_PATH.ROOT,
+    component: TopicPage,
+  },
+  {
+    path: TOPICS_PATH.WITHID,
     component: TopicPage,
   },
   {
     path: POSTS_PATH.WITHID,
-    component: PostPage,
+    component: PostsPage,
+  },
+  {
+    path: APPLY_PATH,
+    component: ApplyPage,
   },
 ];
 

@@ -6,7 +6,7 @@ import { rem } from "polished";
 import { styled } from "@styles/stitches.config";
 import { PostDTO } from "@_types/post-types";
 import { Link } from "react-router-dom";
-import { POSTS_PATH, TOPIC_PATH } from "@constants/route-constants";
+import { POSTS_PATH, TOPICS_PATH } from "@constants/route-constants";
 
 interface PostProps {
   post: PostDTO;
@@ -21,14 +21,14 @@ const Post = ({ post }: PostProps) => {
       <Link to={`${POSTS_PATH.ROOT}/${post.id}`} style={{ color: "#000000", transition: "all 0.2s ease-in-out" }}>
         <Content>{_.truncate(post.content, { length: 256, omission: "..." })}</Content>
       </Link>
-      <TopicContiner>
+      <TopicList>
         {post.topics.map((topic) => (
-          <Topic key={topic.id} to={`${TOPIC_PATH}/${topic.id}`}>
+          <Topic key={topic.id} to={`${TOPICS_PATH.ROOT}/${topic.id}`}>
             {topic.name}
           </Topic>
         ))}
-      </TopicContiner>
-      <Time>{dayjs().toString()}</Time>
+      </TopicList>
+      <Time>{dayjs(post.createdDate).format("YYYY년 MM월 DD일 HH:mm")}</Time>
     </Card>
   );
 };
@@ -54,8 +54,9 @@ const Content = styled("p", {
   fontSize: rem(15),
 });
 
-const TopicContiner = styled("div", {
+const TopicList = styled("div", {
   rowCenteredY: true,
+  flexWrap: "wrap",
   marginTop: rem(14),
   gap: rem(6),
 });
