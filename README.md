@@ -55,11 +55,11 @@ https://drive.google.com/file/d/1AgoeoUX1dYvTnqT8qLWv28YV8yaqoG6g/view
 
 ### 백엔드
 
-백엔드 프로젝트는 **Kotlin** 언어로 개발되었으며**, Spring Boot 프레임워크**를 이용합니다. 
+백엔드 프로젝트는 **Kotlin** 언어로 개발되었으며, **Spring Boot 프레임워크**를 이용합니다.   
 
-데이터베이스로는 **Maria DB** 를 이용하고 있습니다.
+데이터베이스로는 **Maria DB** 를 이용하고 있습니다.   
 
-**실행 방법**
+**실행 방법**   
 
 ```
 CommunityApplication.kt 파일의 main 함수를 실행하여 애플리케이션을 실행합니다.
@@ -67,24 +67,28 @@ CommunityApplication.kt 파일의 main 함수를 실행하여 애플리케이션
 
 ### 프론트엔드
 
-**language** : Typescript
-**framework** : Vite(ReactJS)
-**css** : @stitches/react
-**store** : MobX
+**language** : Typescript   
+**framework** : Vite(ReactJS)   
+**css** : @stitches/react   
+**store** : MobX   
 
 #### 설치
 
-`yarn install`
+```
+yarn install
+```
 
 #### 실행
 
-`yarn dev`
+```
+yarn dev
+```
 
 
 ## 팀원
 
-* **김경록** - 조장, 개발자(백엔드)
+* **김경록** - 조장, 개발자(백엔드)   
 
-* **이학** - 개발자(프론트엔드)
+* **이학** - 개발자(프론트엔드)   
 
-* **박지영** - 기획자, 개발자
+* **박지영** - 기획자, 개발자   
